@@ -935,9 +935,6 @@ CSV_FILE_PATH = "/home/dli/CO_ver2/co_readings_Beta.csv"  # Path to save the CSV
 </code>
 </pre>
 
-* Webhook URL = [https://discord.com/api/webhooks/1313826821787226132/txS4YAXl6tm_5UWQVzSCX0rQRLGOOELs2a_9PIk3vMNALzxxX2r88bDJcZ6f0K5v_3oe]
-
-
 ***
 ## #3 CO Monitoring System
 * Provides real-time monitoring and prediction of CO concentration while simultaneously responding to user inquiries and sending status notifications.
