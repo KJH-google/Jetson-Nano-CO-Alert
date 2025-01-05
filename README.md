@@ -414,11 +414,11 @@ from openai import OpenAI
 import gradio as gr
 import json
 
-# ===== Parts that need to be modified for your environment =====
+
 PORT = "/dev/ttyUSB0"  # Check the Arduino port on Jetson Nano (e.g., /dev/ttyACM0)
 WEBHOOK_URL = "https://discord.com/api/webhooks/1313826821787226132/txS4YAXl6tm_5UWQVzSCX0rQRLGOOELs2a_9PIk3vMNALzxxX2r88bDJcZ6f0K5v_3oe"  # Actual Discord Webhook URL
 CSV_FILE_PATH = "/home/dli/CO_ver2/co_readings_gradio.csv"  # Path to save the CSV file
-# =============================================================
+
 </code>
 </pre>
 
@@ -939,7 +939,7 @@ CSV_FILE_PATH = "/home/dli/CO_ver2/co_readings_Beta.csv"  # Path to save the CSV
 ## #3 CO Monitoring System
 * Provides real-time monitoring and prediction of CO concentration while simultaneously responding to user inquiries and sending status notifications.
 
-### <Resolved version including previous errors with Gradio>
+## #Resolved version including previous errors with Gradio
 <pre>
 <code>
 import serial
@@ -1222,7 +1222,7 @@ if __name__ == "__main__":
 </pre>
 
 ***
-### <Final Code>
+## #Final Code (Jupyer Notebook ver. / Step by step)
 <pre>
 <code>
 import serial
@@ -1236,11 +1236,10 @@ from openai import OpenAI
 import gradio as gr
 import json
 
-# ===== Modify these parts to match your environment =====
 PORT = "/dev/ttyUSB0"  # Check the Arduino port on Jetson Nano (e.g., /dev/ttyACM0)
 WEBHOOK_URL = "https://discord.com/api/webhooks/1313826821787226132/txS4YAXl6tm_5UWQVzSCX0rQRLGOOELs2a_9PIk3vMNALzxxX2r88bDJcZ6f0K5v_3oe"  # Actual Discord Webhook URL
 CSV_FILE_PATH = "/home/dli/CO_ver2/co_readings_gradio.csv"  # Path to save the CSV file
-# ==========================================================
+
 </code>
 </pre>
 
