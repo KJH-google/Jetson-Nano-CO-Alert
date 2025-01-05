@@ -119,7 +119,9 @@ void loop() {
 
 
 
-* Code for MQ-7 Gas Sensor, Discord Notification Transmission, and Buzzer Alert 
+* Code for MQ-7 Gas Sensor, Discord Notification Transmission, and Buzzer Alert
+* However, the code below was how to send Discord through Arduino IDE, but it failed due to a version issue related to the WIFI module.
+  
 <pre>
 <code>
 const int MQ7_AOUT_PIN = A0; // Analog pin connected to the AOUT pin of the MQ-7 sensor
@@ -157,8 +159,8 @@ void loop() {
 
 <pre>
 <code>
-#include <WiFi.h>
-#include <HTTPClient.h>
+#include <<WiFi.h>>
+#include <<HTTPClient.h>>
 
 const char* ssid = "Your_SSID";      // Wi-Fi name
 const char* password = "Your_PASS";  // Wi-Fi password
@@ -268,6 +270,8 @@ void loop() {
 </pre>
 
 * Python part
+* Instead of Arduino IDE, I succeeded in sending discord alarms using Python's serial and time.
+* Since then, there is a limit to modifying it in Arduino IDE, so the project was carried out using the linkage between Arduino IDE and Python.
   
 <pre>
 <code>
@@ -401,6 +405,7 @@ if __name__ == "__main__":
 >    * Keyboard Interrupt : Safely terminates the program upon user request.
 >    * Resource Cleanup : Closes the serial port to release resources.
 
+* Below, I completed the discord alarm transmission and CO prediction system using Python.
 <pre>
 <code>
 import serial
@@ -735,9 +740,9 @@ finally:
 
 ***
 
-# <Code Refinement Starts Here (Including Trial and Error)>
+# Code Refinement Starts Here (Including Trial and Error)
 
-## #1 Arduino IDE
+## 1. Arduino IDE
 > * Converting the analog values output by the MQ-7 sensor into ppm units.
 > * Ensuring that the buzzer sounds when the defined thresholds (e.g., Normal, Danger, etc.) are exceeded.
 
@@ -805,7 +810,7 @@ void loop() {
 
 
 ***
-## #2 Discord Notification Sending
+## 2. Discord Notification Sending
 > * Content for sending notifications to Discord
 > * Notification Format: '⚠️ CO {status} Status ⚠️', "The current CO concentration is {ppm:.2f} ppm." (Allows users to know the current concentration and status)
 <pre>
@@ -817,11 +822,11 @@ from datetime import datetime
 import csv
 import os
 
-# ===== Modify these parts to match your environment =====
+
 PORT = "/dev/ttyACM0"  # Check the Arduino port on Jetson Nano (e.g., /dev/ttyACM0)
 WEBHOOK_URL = "YOUR_DISCORD_WEBHOOK_URL"  # Actual Discord Webhook URL
 CSV_FILE_PATH = "/home/your_username/data/co_readings.csv"  # Path to save the CSV file
-# ==========================================================
+
 
 # Status criteria
 # Normal: ppm < 200
@@ -936,10 +941,9 @@ CSV_FILE_PATH = "/home/dli/CO_ver2/co_readings_Beta.csv"  # Path to save the CSV
 </pre>
 
 ***
-## #3 CO Monitoring System
-* Provides real-time monitoring and prediction of CO concentration while simultaneously responding to user inquiries and sending status notifications.
-
-## #Resolved version including previous errors with Gradio
+## 3. CO Monitoring System
+> * Provides real-time monitoring and prediction of CO concentration while simultaneously responding to user inquiries and sending status notifications.
+> * Resolved version including previous errors with Gradio
 <pre>
 <code>
 import serial
@@ -953,12 +957,12 @@ from openai import OpenAI
 import gradio as gr
 import json
 
-# ===== Modify these parts to match your environment =====
+
 PORT = "/dev/ttyUSB0"  # Check the Arduino port on Jetson Nano (e.g., /dev/ttyACM0)
 WEBHOOK_URL = "https://discord.com/api/webhooks/1313826821787226132/txS4YAXl6tm_5UWQVzSCX0rQRLGOOELs2a_9PIk3vMNALzxxX2r88bDJcZ6f0K5v_3oe"  # Actual Discord Webhook URL
 CSV_FILE_PATH = "/home/dli/CO_ver2/co_readings_gradio.csv"  # Path to save the CSV file
 
-# ==========================================================
+  
 </code>
 </pre>
 
@@ -1222,7 +1226,7 @@ if __name__ == "__main__":
 </pre>
 
 ***
-## #Final Code (Jupyer Notebook ver. / Step by step)
+## # Final Code (Jupyer Notebook ver. / Step by step)
 <pre>
 <code>
 import serial
